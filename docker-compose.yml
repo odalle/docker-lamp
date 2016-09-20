@@ -5,14 +5,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
     volumes:
-      - db:/var/lib/mysql
+      - ./data/db:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
   php:
     build: ./php
     ports:
       - '80:80'
     volumes:
-      - ./html:/var/www/html
+      - ./data/html:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mysql
